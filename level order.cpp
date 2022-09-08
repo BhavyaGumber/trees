@@ -1,31 +1,22 @@
 class Solution
 {
-public:
-    vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target)
+    public:
+    //Function to return the level order traversal of a tree.
+    vector<int> levelOrder(Node* node)
     {
-        vector<pair<int,int>> v;
-        
-        // code here
-        Node *curr1=head;
-        Node *curr2 = head;
-        while(curr2->next!=NULL){
-            curr2=curr2->next;
-            
-        }
-        while(curr1!=curr2 && curr2->next!=curr1){
-        if(curr1->data+curr2->data==target){
-            v.push_back({curr1->data,curr2->data});
-            curr1=curr1->next;
-            curr2=curr2->prev;
-            
-        }
-        else if(curr1->data+curr2->data<target){
-            curr1=curr1->next;
-        }
-        else{
-            curr2=curr2->prev;
-        }
-        }
-        return v;
+      //Your code here
+      vector<int> v;
+      if(node==NULL)return v;
+      queue<Node *> q;
+      q.push(node);
+      while(!q.empty()){
+          int size = q.size();
+          Node *node1 = q.front();
+          q.pop();
+          if(node1->left!=NULL)q.push(node1->left);
+          if(node1->right!=NULL)q.push(node1->right);
+          v.push_back(node1->data);
+      }
+      return v;
     }
 };
