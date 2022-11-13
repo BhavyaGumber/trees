@@ -20,3 +20,5 @@ class Solution
       return v;
     }
 };
+// time O(N) traversing all nodes of the tree once
+// space O(N) usage of vector for storing that answer
